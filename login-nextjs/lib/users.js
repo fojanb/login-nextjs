@@ -1,7 +1,8 @@
+// lib -> users -> All function that use across the prj.
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// JWT Utilities
+// JWT Utilities -> needs '.env' , I'll do this later
 const jwtSecretKey = "#$T#TDFBdfbnkl34lktnvs9-7t34978tsdV!";
 // Bcrypt utilities
 const saltRounds = 10;
@@ -12,7 +13,7 @@ console.log(hashPassword("123456"));
 const users = [
 	{ id: 0, username: "alimaster", password: "$2b$10$Sl8BsmAmJAKUCKlG2FlwZOgbiCGMkEkpgjEfc/FDdFMcq6RFaZjw2" },
 ];
-
+// ----------------------------------------------------
 export function findUser(username) {
 	return users.find((user) => user.username === username);
 }
