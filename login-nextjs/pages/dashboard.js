@@ -8,9 +8,10 @@ export default function Dashboard() {
 		}
 	}, []);
 
-	return <div>Welcome back Soldier</div>;
+	return <div>Welcome back soldier. Welcome to your empty profile.</div>;
 }
 
+// Fojan side notes :
 // class A extends React.Component {
 //     componentDidUpdate() {
 //         React.useEffect(() => {
