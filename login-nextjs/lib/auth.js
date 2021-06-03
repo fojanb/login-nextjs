@@ -6,5 +6,4 @@ export const loginUser = async (username, password) => {
 
 	return data;
 };
-// Forget about auth.js
-// I need to setup a server.js --> I have propblem here
+
