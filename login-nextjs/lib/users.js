@@ -1,10 +1,11 @@
-// lib -> users -> All function that use across the prj.
+// lib -> users -> All JS function that use across the project.
 const bcrypt = require("bcrypt");
+// OR: import bcrypt from 'bcrypt'
 const jwt = require("jsonwebtoken");
 
 // JWT Utilities -> needs '.env' , I'll do this later
 const jwtSecretKey = "#$T#TDFBdfbnkl34lktnvs9-7t34978tsdV!";
-// Bcrypt utilities
+// Bcrypt utilities:
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 
@@ -39,6 +40,7 @@ export function login(username, password) {
 
 	const user = findUser(username);
 	const hashedPassword = hashPassword(password);
+
 	if (!checkPassword(hashedPassword, user.password)) {
 		return {
 			error: "WRONG_CREDENTIAL",
@@ -58,7 +60,11 @@ export function login(username, password) {
 	};
 }
 
-function register(username, password) {}
+function register(username, password) {
+
+
+
+}
 
 function hashPassword(password) {
 	return bcrypt.hashSync(password, salt);
@@ -67,3 +73,10 @@ function hashPassword(password) {
 function checkPassword(currentHashedPassword, hashedPassword) {
 	return bcrypt.compare(currentHashedPassword, hashedPassword);
 }
+
+// Fojan side note :
+// The find() method returns the value of the first element in the 
+// provided array that satisfies the provided testing function.
+//  If no values satisfy the testing function, undefined is returned.
+
+// bcrypt.compare -> return a boolean
