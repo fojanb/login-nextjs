@@ -7,4 +7,5 @@ export const loginUser = async (username, password) => {
 	return data;
 };
 
-// Axios for HTTp request
+
+// Axios for HTTP request
