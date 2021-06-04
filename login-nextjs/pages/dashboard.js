@@ -1,10 +1,19 @@
 import React from "react";
 import Router from "next/router";
+import { whoAmI } from "../lib/auth";
+
 export default function Dashboard() {
 	// Watchers
 	React.useEffect(() => {
 		if (!window.localStorage.getItem("token")) {
 			Router.push("/auth/login");
+		} else {
+			(async () => {
+				try {
+					const data = await whoAmI();
+					console.log("whoAmI", data);
+				} catch (error) {}
+			})();
 		}
 	}, []);
 

@@ -1,4 +1,4 @@
-import { login } from "../../lib/users";
+import { login, register } from "../../lib/users";
 
 export default (req, res) => {
 	if (req.method !== "POST") {
@@ -9,7 +9,7 @@ export default (req, res) => {
 		return;
 	}
 
-	const { username, password } = JSON.parse(req.body);
+	const payload = JSON.parse(req.body);
 
-	res.status(200).json(login(username, password));
+	res.status(200).json(register(payload));
 };
