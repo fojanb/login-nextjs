@@ -9,7 +9,9 @@ export default (req, res) => {
 		return;
 	}
 
-	const { username, password } = JSON.parse(req.body);
+	const {
+		body: { username, password },
+	} = req;
 
 	res.status(200).json(login(username, password));
 };

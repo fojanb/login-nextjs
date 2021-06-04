@@ -11,7 +11,6 @@ export function LoginForm() {
 
 		console.log(username, password, rememberMe);
 		try {
-			// API call:
 			const data = await loginUser(username, password);
 
 			if (data.payload && data.payload.token) {
