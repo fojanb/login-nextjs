@@ -23,6 +23,6 @@ export const whoAmI = async () => {
 		},
 		method: "GET",
 	});
-	const data = await res.json();lknlknk
+	const data = await res.json();
 	return data;
 };
