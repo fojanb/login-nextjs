@@ -1,4 +1,4 @@
-// lib -> users -> All JS function that use across the project.
+// lib -> users -> All JS function that I use across the project.
 const bcrypt = require("bcrypt");
 // OR: import bcrypt from 'bcrypt'
 const jwt = require("jsonwebtoken");
