@@ -1,5 +1,6 @@
+// api folder ---> Welcome to the server-side world
 import { login } from "../../lib/users";
-
+// Request Handler Function
 export default (req, res) => {
   if (req.method !== "POST") {
     res.status(405).json({
