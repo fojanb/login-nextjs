@@ -3,21 +3,46 @@ import Router from "next/router";
 import { whoAmI } from "../lib/auth";
 
 export default function Dashboard() {
-	// Watchers
-	React.useEffect(() => {
-		if (!window.localStorage.getItem("token")) {
-			Router.push("/auth/login");
-		} else {
-			(async () => {
-				try {
-					const data = await whoAmI();
-					console.log("whoAmI", data);
-				} catch (error) {}
-			})();
-		}
-	}, []);
+  const [user, setUser] = React.useState({});
+  // Watchers
+  React.useEffect(() => {
+    if (!window.localStorage.getItem("token")) {
+      Router.push("/auth/login");
+    } else {
+      (async () => {
+        try {
+          const data = await whoAmI();
+          console.log("whoAmI", data);
+          setUser(data.payload);
+        } catch (error) {}
+      })();
+    }
+  }, []);
 
-	return <div>Welcome back soldier. Welcome to your empty profile.</div>;
+  function handleLogout(e) {
+    e.preventDefault();
+
+    window.localStorage.removeItem("token");
+    window.sessionStorage.removeItem("token");
+
+    Router.push("/auth/login");
+  }
+
+  if (user.username) {
+    return (
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            Welcome {user.username}!
+          </a>
+          <button className="d-flex btn btn-outline-success" type="button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      </nav>
+    );
+  }
+  return <div>Welcome back soldier. Welcome to your empty profile.</div>;
 }
 
 // Fojan side notes :
