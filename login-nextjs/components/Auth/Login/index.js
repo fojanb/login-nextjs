@@ -17,7 +17,6 @@ export function LoginForm() {
       setIsLoading(true);
       // API call:
       const data = await loginUser(username, password);
-
       if (data.payload && data.payload.token) {
         if (rememberMe) {
           window.localStorage.setItem("token", data.payload.token);
