@@ -19,7 +19,7 @@ const users = [
 		password: "$2b$10$Sl8BsmAmJAKUCKlG2FlwZOgbiCGMkEkpgjEfc/FDdFMcq6RFaZjw2",
 	},
 ];
-// ----------------------------------------------------
+// ----------------------------------------------------*
 export function findUser(username) {
 	return users.find((user) => user.username === username);
 }
@@ -27,12 +27,12 @@ export function findUser(username) {
 export function isUserExists(username) {
 	return findUser(username) || false;
 }
-
+// ----------------------------------------------------*
 export function login(username, password) {
 	if (!username || !password) {
 		return {
 			error: "WRONG_CREDENTIAL",
-			message: `Username and Password is required.`,
+			message: `Both Username and Password are required.`,
 		};
 	}
 
