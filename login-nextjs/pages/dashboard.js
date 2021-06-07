@@ -31,17 +31,17 @@ export default function Dashboard() {
   if (user.username) {
     return (
       <>
-      <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Welcome {user.username}!
-          </a>
-          <button className="btn btn-info" type="button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </nav>
-      <h3>{user.username}'s Profile</h3>
+        <nav className="navbar navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">
+              Welcome {user.username}!
+            </a>
+            <button className="btn btn-info" type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        </nav>
+        <h3>{user.username}'s Profile</h3>
       </>
     );
   }
