@@ -30,6 +30,7 @@ export default function Dashboard() {
 
   if (user.username) {
     return (
+      <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
@@ -40,9 +41,10 @@ export default function Dashboard() {
           </button>
         </div>
       </nav>
+      <h3>{user.username}'s Profile</h3>
+      </>
     );
   }
-  return <div>Welcome back soldier. Welcome to your empty profile.</div>;
 }
 
 // Fojan side notes :
