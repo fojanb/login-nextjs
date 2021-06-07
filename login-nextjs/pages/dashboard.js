@@ -45,6 +45,7 @@ export default function Dashboard() {
       </>
     );
   }
+  return <div>Welcome back soldier. Welcome to your empty profile.</div>;
 }
 
 // Fojan side notes :
