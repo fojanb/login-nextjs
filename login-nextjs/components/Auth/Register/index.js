@@ -28,7 +28,7 @@ export function RegisterForm() {
 				<legend className="h1">Register</legend>
 				<div className="mb-3">
 					<label htmlFor="emailInput" className="form-label">
-						Username
+						Email
 					</label>
 					<input
 						type="email"
