@@ -1,10 +1,10 @@
-import React from "react";
+import React ,{useState}from "react";
 import { registerUser } from "../../../lib/auth";
 
 export function RegisterForm() {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
