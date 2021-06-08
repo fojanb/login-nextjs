@@ -9,13 +9,13 @@ export function RegisterForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       const data = await registerUser({
         username,
         password,
         email,
       });
+      // console.log(data);
 
       if (data.isSuccessful) {
         Router.push("/auth/login");
