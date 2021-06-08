@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import Router from "next/router";
 import { loginUser } from "../../../lib/auth";
 
@@ -17,6 +17,9 @@ export function LoginForm() {
       setIsLoading(true);
       // API call:
       const data = await loginUser(username, password);
+      // console.log("Data is :", data);
+      // console.log("Payload is :" , data.payload);
+      // console.log("Token is :" , data.payload.token);
       if (data.payload && data.payload.token) {
         if (rememberMe) {
           window.localStorage.setItem("token", data.payload.token);
