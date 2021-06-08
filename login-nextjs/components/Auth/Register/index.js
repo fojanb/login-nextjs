@@ -1,5 +1,6 @@
-import React ,{useState}from "react";
+import { useState } from "react";
 import { registerUser } from "../../../lib/auth";
+import Router from "next/router";
 
 export function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -16,7 +17,9 @@ export function RegisterForm() {
         email,
       });
 
-      console.log(data);
+      if (data.isSuccessful) {
+        Router.push("/auth/login");
+      }
     } catch (error) {
       console.log(error);
     }
