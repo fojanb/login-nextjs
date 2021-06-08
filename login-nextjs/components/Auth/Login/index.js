@@ -91,7 +91,7 @@ export function LoginForm() {
           </div>
         )}
         <button type="submit" className="btn btn-primary" disabled={isLoading}>
-          Submit
+          Login
         </button>
       </fieldset>
     </form>
