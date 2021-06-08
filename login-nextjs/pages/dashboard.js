@@ -1,32 +1,44 @@
-import React , {useState}from "react";
+import React, { useState } from "react";
 import Router from "next/router";
+import { whoAmI } from "../lib/auth";
+import { removeToken } from "../lib/token";
 export default function Dashboard() {
   const [user, setUser] = useState({});
   // Watchers
   React.useEffect(() => {
-    if (!window.localStorage.getItem("token")) {
-      Router.push("/auth/login");
+    const token = window.localStorage.getItem("token") || window.sessionStorage.getItem("token");
+    if (!token) {
+      redirectToLogin();
     } else {
       (async () => {
         try {
           const data = await whoAmI();
-          console.log("whoAmI", data);
-          setUser(data.payload);
-        } catch (error) {}
+          if (data.error === "Unauthorized") {
+            // User is unauthorized and there is no way to support the User, it should be redirected to the Login page and try to logIn again.
+            redirectToLogin();
+          } else {
+            setUser(data.payload);
+          }
+        } catch (error) {
+          // If we receive any error, we should be redirected to the Login page
+          redirectToLogin();
+        }
       })();
     }
   }, []);
 
-  function handleLogout(e) {
-    e.preventDefault();
-
-    window.localStorage.removeItem("token");
-    window.sessionStorage.removeItem("token");
-
+  function redirectToLogin() {
     Router.push("/auth/login");
   }
 
-  if (user.username) {
+  function handleLogout(e) {
+    e.preventDefault();
+
+    removeToken();
+    redirectToLogin();
+  }
+
+  if (user.hasOwnProperty("username")) {
     return (
       <>
         <nav className="navbar navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
