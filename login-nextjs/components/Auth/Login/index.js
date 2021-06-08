@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Router from "next/router";
 import { loginUser } from "../../../lib/auth";
+import { removeToken } from "../../../lib/token";
 
 export function LoginForm() {
   const [username, setUsername] = useState("");
@@ -9,11 +10,14 @@ export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    // Remove the User's token which saved before.
+    removeToken();
+  }, []);
+
   async function handleSubmit(e) {
     e.preventDefault();
 
-
-    console.log(username, password, rememberMe);
     try {
       setIsLoading(true);
       // API call:
@@ -27,7 +31,9 @@ export function LoginForm() {
         } else {
           window.sessionStorage.setItem("token", data.payload.token);
         }
-        Router.push("/dashboard");
+        setTimeout(() => {
+          Router.push("/dashboard");
+        }, 1000);
       } else {
         setErrorMessage(data.message);
       }
