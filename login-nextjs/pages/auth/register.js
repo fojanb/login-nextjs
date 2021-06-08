@@ -1,7 +1,7 @@
 import { BaseAuthLayout } from "../../components/Auth/Base";
 import { RegisterForm } from "../../components/Auth/Register";
 
-export default function Login() {
+export default function Register() {
   return (
     <BaseAuthLayout>
       <RegisterForm />
