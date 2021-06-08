@@ -43,6 +43,7 @@ export function login(username, password) {
 
   const user = findUser(username); //user={}
   const hashedPassword = hashPassword(password);
+  console.log(hashedPassword);
 
   if (!checkPassword(hashedPassword, user.password)) {
     return {
@@ -84,6 +85,7 @@ export function register({ username, password, email }) {
 
   const hashedPassword = hashPassword(password);
   const lastUser = users[users.length - 1];
+  console.log(lastUser);
   const id = lastUser ? lastUser.id + 1 : 0;
   console.log("users:before", users.length);
   users = users.concat([
