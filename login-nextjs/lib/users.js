@@ -43,7 +43,7 @@ export function login(username, password) {
 
   const user = findUser(username); //user={}
   const hashedPassword = hashPassword(password);
-  console.log(hashedPassword);
+  // console.log(hashedPassword);
 
   if (!checkPassword(hashedPassword, user.password)) {
     return {
