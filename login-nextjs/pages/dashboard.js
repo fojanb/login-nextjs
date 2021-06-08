@@ -1,9 +1,9 @@
-import React from "react";
+import React , {useState}from "react";
 import Router from "next/router";
 import { whoAmI } from "../lib/auth";
 
 export default function Dashboard() {
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = useState({});
   // Watchers
   React.useEffect(() => {
     if (!window.localStorage.getItem("token")) {
