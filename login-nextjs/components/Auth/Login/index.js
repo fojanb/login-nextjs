@@ -38,8 +38,6 @@ export function LoginForm() {
     }
   }
 
-
-
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
