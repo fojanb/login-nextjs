@@ -3,14 +3,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // JWT Utilities -> needs '.env' , I'll do this later
-const jwtSecretKey = "#$T#TDFBdfbnkl34lktnvs9-7t34978tsdV!";
+const jwtSecretKey = process.env.JWT_SECRET_KEY;
 // Bcrypt utilities
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 
-console.log(hashPassword("123456"));
 // Users list
-const users = [
+let users = [
   {
     id: 0,
     username: "makan",
@@ -84,13 +83,19 @@ export function register({ username, password, email }) {
   }
 
   const hashedPassword = hashPassword(password);
-  const id = users[users.length - 1] ? users[users.length - 1].id + 1 : 0;
-  users.push({
-    username,
-    password: hashedPassword,
-    email,
-    id,
-  });
+  const lastUser = users[users.length - 1];
+  const id = lastUser ? lastUser.id + 1 : 0;
+  console.log("users:before", users.length);
+  users = users.concat([
+    {
+      username,
+      password: hashedPassword,
+      email,
+      id,
+    },
+  ]);
+  console.log("users:after", users.length);
+  console.log("users", JSON.stringify(users, null, 2));
 
   return {
     isSuccessful: true,
