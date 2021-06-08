@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // lib -> users -> All JS function that I use across the project.
-=======
-// lib -> users -> All function that use across the prj.
->>>>>>> main
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -15,16 +11,12 @@ const salt = bcrypt.genSaltSync(saltRounds);
 console.log(hashPassword("123456"));
 // Users list
 const users = [
-<<<<<<< HEAD
   {
     id: 0,
     username: "makan",
     email: "makan@google.com",
     password: "$2b$10$Sl8BsmAmJAKUCKlG2FlwZOgbiCGMkEkpgjEfc/FDdFMcq6RFaZjw2",
   },
-=======
-	{ id: 0, username: "alimaster", password: "$2b$10$Sl8BsmAmJAKUCKlG2FlwZOgbiCGMkEkpgjEfc/FDdFMcq6RFaZjw2" },
->>>>>>> main
 ];
 // ----------------------------------------------------*
 export function findUser(username) {
@@ -36,7 +28,6 @@ export function isUserExists(username) {
 }
 // ----------------------------------------------------*
 export function login(username, password) {
-<<<<<<< HEAD
   if (!username || !password) {
     return {
       error: "WRONG_CREDENTIAL",
@@ -125,44 +116,6 @@ export function whoAmI(username) {
     },
   };
 }
-=======
-	if (!username || !password) {
-		return {
-			error: "WRONG_CREDENTIAL",
-			message: `Username and Password is required.`,
-		};
-	}
-
-	if (!isUserExists(username)) {
-		return {
-			error: "USER_NOT_FOUND",
-			message: `${username} is not defined, make sure the user is registered before.`,
-		};
-	}
-
-	const user = findUser(username);
-	const hashedPassword = hashPassword(password);
-	if (!checkPassword(hashedPassword, user.password)) {
-		return {
-			error: "WRONG_CREDENTIAL",
-			message: "Your Password is wrong. Shame on you!(^_^)",
-		};
-	}
-
-	// Create new token by username
-	const token = jwt.sign({ username: user.username, id: user.id }, jwtSecretKey, {
-		expiresIn: 3000,
-	});
-
-	return {
-		payload: {
-			token,
-		},
-	};
-}
-
-function register(username, password) {}
->>>>>>> main
 
 function hashPassword(password) {
   return bcrypt.hashSync(password, salt);
@@ -171,7 +124,6 @@ function hashPassword(password) {
 function checkPassword(currentHashedPassword, hashedPassword) {
   return bcrypt.compare(currentHashedPassword, hashedPassword);
 }
-<<<<<<< HEAD
 
 export function verifyToken(token) {
   return jwt.verify(token, jwtSecretKey);
@@ -191,5 +143,3 @@ function errorMessage(error, message) {
     message,
   };
 }
-=======
->>>>>>> main
