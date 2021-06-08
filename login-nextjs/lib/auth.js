@@ -1,3 +1,4 @@
+import { getToken } from "./token";
 
 export const loginUser = async (username, password) => {
   const res = await fetch("/api/login", {
@@ -20,7 +21,7 @@ export const registerUser = async (payload) => {
 export const whoAmI = async () => {
   const res = await fetch("/api/profile", {
     headers: {
-      authorization: window.localStorage.getItem("token"),
+      authorization: getToken(),
     },
     method: "GET",
   });
