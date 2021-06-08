@@ -14,7 +14,7 @@ export default (req, res) => {
     try {
       const verifiedUser = verifyToken(authorizationToken);
 
-      if (trueTypeOf(verifiedUser) === "object" && verifiedUser.hasOwnProperty("username")) {
+      if (verifiedUser) {
         const user = findUser(verifiedUser.username);
         res.status(200).json({
           payload: {
@@ -26,6 +26,7 @@ export default (req, res) => {
         return;
       }
     } catch (error) {
+      console.log("error", error);
       // Token has been expired or we detected a fruad attack
       res.status(401).json({
         error: "Unauthorized",
