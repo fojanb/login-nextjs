@@ -1,8 +1,7 @@
 import React , {useState}from "react";
 import Router from "next/router";
-import { whoAmI } from "../lib/auth";
-
 export default function Dashboard() {
+<<<<<<< HEAD
   const [user, setUser] = useState({});
   // Watchers
   React.useEffect(() => {
@@ -46,6 +45,16 @@ export default function Dashboard() {
     );
   }
   return <div>Welcome back soldier. Welcome to your empty profile.</div>;
+=======
+	// Watchers
+	React.useEffect(() => {
+		if (!window.localStorage.getItem("token")) {
+			Router.push("/auth/login");
+		}
+	}, []);
+
+	return <div>Welcome back soldier. Welcome to your empty profile.</div>;
+>>>>>>> main
 }
 
 // Fojan side notes :

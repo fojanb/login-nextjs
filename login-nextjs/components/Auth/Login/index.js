@@ -12,6 +12,7 @@ export function LoginForm() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+
     console.log(username, password, rememberMe);
     try {
       setIsLoading(true);
@@ -36,6 +37,8 @@ export function LoginForm() {
       setIsLoading(false);
     }
   }
+
+
 
   return (
     <form onSubmit={handleSubmit}>
