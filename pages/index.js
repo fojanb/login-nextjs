@@ -6,7 +6,8 @@ const Homepage = () => {
     justifyContent: "center",
     margin: "100px auto",
     padding: "40px",
-    backgroundColor :""
+    backgroundColor :"",
+    boxShadow: "2px 2px 1px 1px rgba(0, 0, 0, 0.02)"
   };
   return (
     <div className="card" style={styles}>
