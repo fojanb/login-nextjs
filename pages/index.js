@@ -11,7 +11,6 @@ const Homepage = () => {
   };
   return (
     <div className="card" style={styles}>
-      {/* <img src="..." className="card-img-top" alt="..." /> */}
       <div className="card-body">
         <h5 className="card-title">Welcome Soldier!</h5>
         <p className="card-text">
