@@ -46,7 +46,12 @@ export default function Dashboard() {
             <a className="navbar-brand" href="#">
               Welcome {user.username}!
             </a>
-            <button className="btn btn-info" type="button" onClick={handleLogout}>
+            <button
+              className="btn btn-info"
+              type="button"
+              style={{ color: "white", backgroundColor: "#0d6efd" }}
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </div>
